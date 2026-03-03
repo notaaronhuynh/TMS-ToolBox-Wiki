@@ -1,0 +1,16 @@
+%Rectify data
+%Inputs: data
+%Outputs: rectified data
+
+function RecData=ProcessRectify(Data)
+
+%Rectify data
+if app.FullWaveButton.Value == 1
+    app.HalfWaveButton.Value = 0;
+    RecData=abs(Data);
+elseif app.HalfWaveButton.Value == 1
+    app.FullWaveButton.Value = 0;
+    RecData = Data(Data >= 0);
+end
+
+end
