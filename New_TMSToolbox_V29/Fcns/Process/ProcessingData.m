@@ -54,7 +54,7 @@ for i=app.ProcessOrderListBox.ItemsData
             app.ProcessOrder{x,2}=app.DelayEditField.Value;
 
         case 8 %Rectify
-            Data=ProcessRectify(Data);
+            Data=ProcessRectify(app, Data);
 
         case 1 %Down sample
             [DataTime,Data,newSampleRate]=ProcessDownSample(DataTime,Data,app.FactorEditField.Value,app.AllSampleRate(1));

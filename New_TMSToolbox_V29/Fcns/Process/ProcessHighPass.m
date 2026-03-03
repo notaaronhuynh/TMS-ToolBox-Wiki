@@ -17,14 +17,14 @@ end
 newData=nan(size(Data))';
 
 %Filter
-if strcmp(app.HighPassFilterType, "Butterworth") % butterworth
-    [b,a] = butter(app.HighPassFilterOrder,Cutoff/(SampleRate/2),'high');
-elseif strcmp(app.HighPassFilterType, "Chebyshev I") % chebyshev type I
-    [b,a] = cheby1(app.HighPassFilterOrder,Cutoff/(SampleRate/2),'high');
-elseif strcmp(app.HighPassFilterType, "Chebyshev II") % chebyshev type Ii
-    [b,a] = cheby2(app.HighPassFilterOrder,Cutoff/(SampleRate/2),'high');
-elseif strcmp(app.HighPassFilterType, "Elliptic") % elliptic
-    [b,a] = ellip(app.HighPassFilterOrder,Cutoff/(SampleRate/2),'high');
+if strcmp(app.HighPassFilterType.Value, "Butterworth") % butterworth
+    [b,a] = butter(app.HighPassFilterOrder.Value,Cutoff/(SampleRate/2),'high');
+elseif strcmp(app.HighPassFilterType.Value, "Chebyshev I") % chebyshev type I
+    [b,a] = cheby1(app.HighPassFilterOrder.Value,Cutoff/(SampleRate/2),'high');
+elseif strcmp(app.HighPassFilterType.Value, "Chebyshev II") % chebyshev type Ii
+    [b,a] = cheby2(app.HighPassFilterOrder.Value,Cutoff/(SampleRate/2),'high');
+elseif strcmp(app.HighPassFilterType.Value, "Elliptic") % elliptic
+    [b,a] = ellip(app.HighPassFilterOrder.Value,Cutoff/(SampleRate/2),'high');
 end
 
 for i=1:length(Data(:,1)) %for each trial

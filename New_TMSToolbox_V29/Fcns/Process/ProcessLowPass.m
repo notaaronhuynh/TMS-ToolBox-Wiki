@@ -17,16 +17,16 @@ end
 newData=nan(size(Data))';
 
 %Filter
-if strcmp(app.LowPassFilterType, "Butterworth") % butterworth
-    [b,a] = butter(app.LowPassFilterOrder,Cutoff/(SampleRate/2),'low');
-elseif strcmp(app.LowPassFilterType, "Chebyshev I") % chebyshev type I
-    [b,a] = cheby1(app.LowPassFilterOrder,Cutoff/(SampleRate/2),'low');
-elseif strcmp(app.LowPassFilterType, "Chebyshev II") % chebyshev type Ii
-    [b,a] = cheby2(app.LowPassFilterOrder,Cutoff/(SampleRate/2),'low');
-elseif strcmp(app.LowPassFilterType, "Elliptic") % elliptic
-    [b,a] = ellip(app.LowPassFilterOrder,Cutoff/(SampleRate/2),'low');
-elseif strcmp(app.LowPassFilterType, "Bessel") % bessel (only low pass)
-    [b,a] = besself(app.LowPassFilterOrder,Cutoff/(SampleRate/2));    
+if strcmp(app.LowPassFilterType.Value, "Butterworth") % butterworth
+    [b,a] = butter(app.LowPassFilterOrder.Value,Cutoff/(SampleRate/2),'low');
+elseif strcmp(app.LowPassFilterType.Value, "Chebyshev I") % chebyshev type I
+    [b,a] = cheby1(app.LowPassFilterOrder.Value,Cutoff/(SampleRate/2),'low');
+elseif strcmp(app.LowPassFilterType.Value, "Chebyshev II") % chebyshev type Ii
+    [b,a] = cheby2(app.LowPassFilterOrder.Value,Cutoff/(SampleRate/2),'low');
+elseif strcmp(app.LowPassFilterType.Value, "Elliptic") % elliptic
+    [b,a] = ellip(app.LowPassFilterOrder.Value,Cutoff/(SampleRate/2),'low');
+elseif strcmp(app.LowPassFilterType.Value, "Bessel") % bessel (only low pass)
+    [b,a] = besself(app.LowPassFilterOrder.Value,Cutoff/(SampleRate/2));    
 end
 
 for i=1:length(Data(:,1)) %for each trial

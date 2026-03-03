@@ -2,7 +2,7 @@
 %Inputs: data
 %Outputs: rectified data
 
-function RecData=ProcessRectify(Data)
+function RecData=ProcessRectify(app, Data)
 
 %Rectify data
 if app.FullWaveButton.Value == 1

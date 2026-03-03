@@ -29,14 +29,14 @@ end
 newData=nan(size(Data))';
 
 %Filter
-if strcmp(app.BandPassFilterType, "Butterworth") % butterworth
-    [bpb,bpa] = butter(app.BandPassFilterOrder,[a b]./(SampleRate/2),'bandpass');
-elseif strcmp(app.BandPassFilterType, "Chebyshev I") % chebyshev type I
-    [bpb,bpa] = cheby1(app.BandPassFilterOrder,[a b]./(SampleRate/2),'bandpass');
-elseif strcmp(app.BandPassFilterType, "Chebyshev II") % chebyshev type Ii
-    [bpb,bpa] = cheby2(app.BandPassFilterOrder,[a b]./(SampleRate/2),'bandpass');
-elseif strcmp(app.BandPassFilterType, "Elliptic") % elliptic
-    [bpb,bpa] = ellip(app.BandPassFilterOrder,[a b]./(SampleRate/2),'bandpass');
+if strcmp(app.BandPassFilterType.Value, "Butterworth") % butterworth
+    [bpb,bpa] = butter(app.BandPassFilterOrder.Value,[a b]./(SampleRate/2),'bandpass');
+elseif strcmp(app.BandPassFilterType.Value, "Chebyshev I") % chebyshev type I
+    [bpb,bpa] = cheby1(app.BandPassFilterOrder.Value,[a b]./(SampleRate/2),'bandpass');
+elseif strcmp(app.BandPassFilterType.Value, "Chebyshev II") % chebyshev type Ii
+    [bpb,bpa] = cheby2(app.BandPassFilterOrder.Value,[a b]./(SampleRate/2),'bandpass');
+elseif strcmp(app.BandPassFilterType.Value, "Elliptic") % elliptic
+    [bpb,bpa] = ellip(app.BandPassFilterOrder.Value,[a b]./(SampleRate/2),'bandpass');
 end
 
 for i=1:length(Data(:,1)) %for each trial
