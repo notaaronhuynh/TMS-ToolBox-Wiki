@@ -81,7 +81,7 @@ for i=app.ProcessOrderListBox.ItemsData
             elseif app.OtherNotchButton.Value 
                 % app.NotchUSButton.Value = 0;
                 % app.NotchEuropeanButton.Value = 0;
-                % app.OtherNotchEditField.Visible = true;
+                % app.OtherNotchEditField.Visible = 1;
                 Freqz = app.OtherNotchEditField.Value;
             end
 

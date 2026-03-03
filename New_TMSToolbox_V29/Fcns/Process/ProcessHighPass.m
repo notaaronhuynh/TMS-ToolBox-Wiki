@@ -20,11 +20,11 @@ newData=nan(size(Data))';
 if strcmp(app.HighPassFilterType.Value, "Butterworth") % butterworth
     [b,a] = butter(app.HighPassFilterOrder.Value,Cutoff/(SampleRate/2),'high');
 elseif strcmp(app.HighPassFilterType.Value, "Chebyshev I") % chebyshev type I
-    [b,a] = cheby1(app.HighPassFilterOrder.Value,Cutoff/(SampleRate/2),'high');
+    [b,a] = cheby1(app.HighPassFilterOrder.Value, app.HighPassFilterRp.Value, Cutoff/(SampleRate/2),'high');
 elseif strcmp(app.HighPassFilterType.Value, "Chebyshev II") % chebyshev type Ii
-    [b,a] = cheby2(app.HighPassFilterOrder.Value,Cutoff/(SampleRate/2),'high');
+    [b,a] = cheby2(app.HighPassFilterOrder.Value, app.HighPassFilterRs.Value, Cutoff/(SampleRate/2),'high');
 elseif strcmp(app.HighPassFilterType.Value, "Elliptic") % elliptic
-    [b,a] = ellip(app.HighPassFilterOrder.Value,Cutoff/(SampleRate/2),'high');
+    [b,a] = ellip(app.HighPassFilterOrder.Value, app.HighPassFilterRp.Value, app.HighPassFilterRs.Value, Cutoff/(SampleRate/2),'high');
 end
 
 for i=1:length(Data(:,1)) %for each trial

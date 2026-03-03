@@ -32,11 +32,11 @@ newData=nan(size(Data))';
 if strcmp(app.BandPassFilterType.Value, "Butterworth") % butterworth
     [bpb,bpa] = butter(app.BandPassFilterOrder.Value,[a b]./(SampleRate/2),'bandpass');
 elseif strcmp(app.BandPassFilterType.Value, "Chebyshev I") % chebyshev type I
-    [bpb,bpa] = cheby1(app.BandPassFilterOrder.Value,[a b]./(SampleRate/2),'bandpass');
+    [bpb,bpa] = cheby1(app.BandPassFilterOrder.Value, app.BandPassFilterRp.Value, [a b]./(SampleRate/2),'bandpass', "ctf");
 elseif strcmp(app.BandPassFilterType.Value, "Chebyshev II") % chebyshev type Ii
-    [bpb,bpa] = cheby2(app.BandPassFilterOrder.Value,[a b]./(SampleRate/2),'bandpass');
+    [bpb,bpa] = cheby2(app.BandPassFilterOrder.Value, app.BandPassFilterRs.Value, [a b]./(SampleRate/2),'bandpass');
 elseif strcmp(app.BandPassFilterType.Value, "Elliptic") % elliptic
-    [bpb,bpa] = ellip(app.BandPassFilterOrder.Value,[a b]./(SampleRate/2),'bandpass');
+    [bpb,bpa] = ellip(app.BandPassFilterOrder.Value, app.BandPassFilterRp.Value, app.BandPassFilterRs.Value, [a b]./(SampleRate/2),'bandpass');
 end
 
 for i=1:length(Data(:,1)) %for each trial

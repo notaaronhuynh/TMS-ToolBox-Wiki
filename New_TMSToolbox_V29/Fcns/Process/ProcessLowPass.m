@@ -20,13 +20,11 @@ newData=nan(size(Data))';
 if strcmp(app.LowPassFilterType.Value, "Butterworth") % butterworth
     [b,a] = butter(app.LowPassFilterOrder.Value,Cutoff/(SampleRate/2),'low');
 elseif strcmp(app.LowPassFilterType.Value, "Chebyshev I") % chebyshev type I
-    [b,a] = cheby1(app.LowPassFilterOrder.Value,Cutoff/(SampleRate/2),'low');
+    [b,a] = cheby1(app.LowPassFilterOrder.Value, app.LowPassFilterRp.Value, Cutoff/(SampleRate/2),'low');
 elseif strcmp(app.LowPassFilterType.Value, "Chebyshev II") % chebyshev type Ii
-    [b,a] = cheby2(app.LowPassFilterOrder.Value,Cutoff/(SampleRate/2),'low');
+    [b,a] = cheby2(app.LowPassFilterOrder.Value, app.LowPassFilterRs.Value, Cutoff/(SampleRate/2),'low');
 elseif strcmp(app.LowPassFilterType.Value, "Elliptic") % elliptic
-    [b,a] = ellip(app.LowPassFilterOrder.Value,Cutoff/(SampleRate/2),'low');
-elseif strcmp(app.LowPassFilterType.Value, "Bessel") % bessel (only low pass)
-    [b,a] = besself(app.LowPassFilterOrder.Value,Cutoff/(SampleRate/2));    
+    [b,a] = ellip(app.LowPassFilterOrder.Value, app.LowPassFilterRp.Value, app.LowPassFilterRs.Value, Cutoff/(SampleRate/2),'low');
 end
 
 for i=1:length(Data(:,1)) %for each trial
