@@ -10,7 +10,8 @@ if app.FullWaveButton.Value == 1
     RecData=abs(Data);
 elseif app.HalfWaveButton.Value == 1
     app.FullWaveButton.Value = 0;
-    RecData = Data(Data >= 0);
+    RecData = Data;
+    RecData(RecData < 0) = 0;
 end
 
 end
